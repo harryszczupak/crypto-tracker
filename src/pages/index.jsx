@@ -3,6 +3,7 @@ import api from '../api/axios'; // Twój axios z baseURL do CoinGecko
 import CoinsList from '../components/CoinsList'; // Twój komponent listy coinów
 import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Loader from '../components/UI/loader';
 const HomePage = () => {
 	const {
 		data,
@@ -71,13 +72,7 @@ const HomePage = () => {
 		};
 	}, [fetchNextPage, hasNextPage, isFetchingNextPage]);
 
-	if (isLoading)
-		return (
-			<div className='flex items-center justify-center min-h-screen bg-gray-900 flex-col'>
-				<div className='w-12 h-12 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin'></div>
-				<p className='text-yellow-400 mt-3'>Loading...</p>
-			</div>
-		);
+	if (isLoading) return <Loader />;
 
 	return (
 		<div className='bg-gray-900 min-h-screen text-white p-4'>
