@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Coin from './Coin';
 
+const MotionLink = motion(Link);
 const containerVariants = {
 	hidden: { opacity: 0 },
 	visible: {
@@ -10,9 +11,10 @@ const containerVariants = {
 		},
 	},
 };
-
-
-
+const itemVariants = {
+	hidden: { opacity: 0, x: -20 },
+	visible: { opacity: 1, x: 0 },
+};
 const CoinsList = ({ data }) => {
 	return (
 		<motion.ul
@@ -21,9 +23,13 @@ const CoinsList = ({ data }) => {
 			initial='hidden'
 			animate='visible'>
 			{data.map((coin) => (
-				
+				<MotionLink
+					to={`/${coin.id}`}
+					className='no-underline'
+					key={coin.id}
+					variants={itemVariants}>
 					<Coin coin={coin} />
-	
+				</MotionLink>
 			))}
 		</motion.ul>
 	);
