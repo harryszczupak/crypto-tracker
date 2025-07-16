@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import Coin from './Coin';
-
+import { Link } from 'react-router-dom';
 const MotionLink = motion(Link);
 const containerVariants = {
 	hidden: { opacity: 0 },
