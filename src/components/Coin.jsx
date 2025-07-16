@@ -1,10 +1,17 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+const itemVariants = {
+	hidden: { opacity: 0, x: -20 },
+	visible: { opacity: 1, x: 0 },
+};
+
 const Coin = ({ coin }) => {
 	return (
 		<Link to={`/${coin.id}`} className='no-underline'>
-			<li
+			<motion.li
+				variants={itemVariants}
 				key={coin.id}
-				className='flex items-center space-x-4 p-3 bg-gray-900 rounded-lg shadow hover:shadow-yellow-500/50 transition border-gray-700 border cursor-pointer'>
+				className='flex items-center space-x-4 p-3 bg-gray-900 rounded-lg shadow hover:shadow-yellow-500/50 transition border-gray-700 border cursor-pointer mb-5'>
 				<img
 					src={coin.image}
 					alt={coin.name}
@@ -18,7 +25,7 @@ const Coin = ({ coin }) => {
 				<div className='ml-auto font-mono font-semibold text-yellow-300'>
 					${coin.current_price.toLocaleString()}
 				</div>
-			</li>
+			</motion.li>
 		</Link>
 	);
 };

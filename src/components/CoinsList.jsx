@@ -11,10 +11,7 @@ const containerVariants = {
 	},
 };
 
-const itemVariants = {
-	hidden: { opacity: 0, x: -20 },
-	visible: { opacity: 1, x: 0 },
-};
+
 
 const CoinsList = ({ data }) => {
 	return (
@@ -24,9 +21,9 @@ const CoinsList = ({ data }) => {
 			initial='hidden'
 			animate='visible'>
 			{data.map((coin) => (
-				<motion.li key={coin.id} variants={itemVariants}>
+				
 					<Coin coin={coin} />
-				</motion.li>
+	
 			))}
 		</motion.ul>
 	);
